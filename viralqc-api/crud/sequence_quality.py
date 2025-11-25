@@ -61,7 +61,7 @@ def run_sequence_quality_pipeline(sequences: List[Dict]) -> List[Dict]:
         exclude = {"index", "seqName"}
         for seq_result in results_data.get("data"):
             result = {
-                "id": seq_result.get("seqName"),
+                "id": int(seq_result.get("seqName")),
                 **{k: v for k, v in seq_result.items() if k not in exclude},
                 "pipeline_name": pipeline_name,
                 "pipeline_version": pipeline_version,
