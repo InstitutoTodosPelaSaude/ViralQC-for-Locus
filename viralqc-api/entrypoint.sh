@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Configure viralQC datasets
+set -eo pipefail
+vqc get-nextclade-datasets --datasets-dir /usr/local/datasets
+vqc get-blast-database --output-dir /usr/local/datasets
+
 # Run health checks
 python /app/healthchecks/healthcheck.py
 
