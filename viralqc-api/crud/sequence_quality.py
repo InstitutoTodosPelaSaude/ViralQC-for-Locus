@@ -49,7 +49,9 @@ def run_sequence_quality_pipeline(sequences: List[Dict]) -> List[Dict]:
         nextclade_sort_min_hits=10,
         blast_database="/usr/local/datasets/blast.fasta",
         blast_database_metadata="/usr/local/datasets/blast.tsv",
-        blast_identity_threshold=0.9,
+        blast_identity_threshold=80,
+        blast_evalue=0.0000000001,
+        blast_qcov=80
     )
     if snakemake_response.status == 200:
         with open(f"{output_directory}/results.json", "r") as f:
@@ -61,7 +63,7 @@ def run_sequence_quality_pipeline(sequences: List[Dict]) -> List[Dict]:
         exclude = {"index", "seqName"}
         for seq_result in results_data.get("data"):
             result = {
-                "id": int(seq_result.get("seqName")),
+                "id": seq_result.get("seqName"),
                 **{k: v for k, v in seq_result.items() if k not in exclude},
                 "pipeline_name": pipeline_name,
                 "pipeline_version": pipeline_version,

@@ -3,7 +3,7 @@ from typing import List
 
 
 class SequenceItem(BaseModel):
-    id: int
+    id: str
     sequence: str
 
 
