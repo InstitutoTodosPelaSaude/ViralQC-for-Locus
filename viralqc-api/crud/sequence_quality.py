@@ -52,7 +52,7 @@ def run_sequence_quality_pipeline(sequences: List[Dict]) -> List[Dict]:
         pipeline_name = "viralQC"
         pipeline_version = version("viralQC")
         pipeline_description = "Quality evaluation for viral sequences."
-        pipeline_docs_url = "https://github.com/InstitutoTodosPelaSaude/viralQC/wiki"
+        pipeline_docs_url = "https://viralqc.readthedocs.io/"
         exclude = {"index", "seqName"}
         for seq_result in results_data:
             result = {
